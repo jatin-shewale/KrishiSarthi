@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaTractor, FaClipboardList, FaRupeeSign, FaPlus, FaCheck, FaTimes, FaCameraRetro } from 'react-icons/fa';
+import { FaTractor, FaClipboardList, FaRupeeSign, FaPlus, FaCheck, FaTimes, FaCameraRetro, FaCreditCard, FaSpinner } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
@@ -13,6 +13,7 @@ const FarmerDashboard = () => {
     const [listings, setListings] = useState([]);
     const [requests, setRequests] = useState([]);
     const [rentals, setRentals] = useState([]);
+    const [payingBookingId, setPayingBookingId] = useState(null);
     
     // Derived Stats
     const totalEarnings = rentals.reduce((acc, curr) => acc + (curr.totalPrice || 0), 0);
@@ -64,6 +65,27 @@ const FarmerDashboard = () => {
             fetchDashboardData();
         } catch (error) {
             toast.error("Failed to update booking status");
+        }
+    };
+
+    const handlePayNow = async (bookingId) => {
+        setPayingBookingId(bookingId);
+        try {
+            const token = localStorage.getItem('krishisarthi_token');
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const res = await axios.post('http://localhost:5000/api/payments/create-checkout-session', {
+                bookingId
+            }, config);
+
+            if (res.data.url) {
+                window.location.href = res.data.url;
+            } else {
+                toast.error("Failed to get payment URL. Please try again.");
+            }
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Payment initialization failed");
+        } finally {
+            setPayingBookingId(null);
         }
     };
 
@@ -215,19 +237,45 @@ const FarmerDashboard = () => {
                                         <div className="space-y-4">
                                             {rentals.length > 0 ? (
                                                 rentals.map(rental => (
-                                                    <div key={rental._id} className="flex items-center justify-between border-b border-gray-100 pb-5 pt-3">
-                                                        <div>
+                                                    <div key={rental._id} className={`flex flex-col sm:flex-row sm:items-center justify-between border p-5 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow ${
+                                                        rental.status === 'approved' && rental.paymentStatus !== 'paid' ? 'border-green-200 bg-green-50/30' : 'border-gray-100'
+                                                    }`}>
+                                                        <div className="mb-4 sm:mb-0">
                                                             <h3 className="font-extrabold text-gray-800 text-lg">{rental.equipment?.name || 'Unknown'}</h3>
                                                             <p className="text-sm text-gray-600 mt-1">Owner: <span className="font-medium">{rental.owner?.name || 'Unknown'}</span></p>
-                                                            <p className="text-xs text-gray-500 mt-1">Amount Paid/Pending: ₹{rental.totalPrice}</p>
+                                                            <p className="text-xs font-medium text-primary mt-1 bg-primary/10 inline-block px-2 py-1 rounded-md">
+                                                                {new Date(rental.startDate).toLocaleDateString()} - {new Date(rental.endDate).toLocaleDateString()}
+                                                            </p>
+                                                            <p className="text-sm text-gray-700 mt-2 font-semibold">Amount: ₹{rental.totalPrice}</p>
                                                         </div>
-                                                        <div>
-                                                            <span className={`text-xs px-3 py-1.5 rounded-full font-bold shadow-sm ${rental.paymentStatus === 'paid' ? 'bg-blue-100/80 text-blue-800' : 'bg-yellow-100/80 text-yellow-800'}`}>
-                                                                Payment: {rental.paymentStatus.toUpperCase()}
+                                                        <div className="flex items-center gap-3 flex-wrap">
+                                                            <span className={`text-xs px-3 py-1.5 rounded-full font-bold shadow-sm ${
+                                                                rental.status === 'approved' ? 'bg-green-100/80 text-green-800' 
+                                                                : rental.status === 'paid' ? 'bg-blue-100/80 text-blue-800'
+                                                                : rental.status === 'rejected' ? 'bg-red-100/80 text-red-800'
+                                                                : 'bg-yellow-100/80 text-yellow-800'
+                                                            }`}>
+                                                                {rental.status === 'paid' ? 'COMPLETED ✓' : rental.status.toUpperCase()}
                                                             </span>
-                                                            <span className={`ml-2 text-xs px-3 py-1.5 rounded-full font-bold shadow-sm ${rental.status === 'approved' ? 'bg-green-100/80 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
-                                                                {rental.status.toUpperCase()}
+                                                            <span className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-bold shadow-sm ${rental.paymentStatus === 'paid' ? 'bg-emerald-100/80 text-emerald-800' : 'bg-yellow-100/80 text-yellow-800'}`}>
+                                                                <span className={`w-1.5 h-1.5 rounded-full ${rental.paymentStatus === 'paid' ? 'bg-emerald-500' : 'bg-yellow-500 animate-pulse'}`}></span>
+                                                                Payment: {rental.paymentStatus === 'paid' ? 'COMPLETED' : 'PENDING'}
                                                             </span>
+
+                                                            {/* PAY NOW button for approved bookings with pending payment */}
+                                                            {rental.status === 'approved' && rental.paymentStatus !== 'paid' && (
+                                                                <button
+                                                                    onClick={() => handlePayNow(rental._id)}
+                                                                    disabled={payingBookingId === rental._id}
+                                                                    className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-2.5 px-5 rounded-xl shadow-lg shadow-green-500/30 transition-all hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                                                                >
+                                                                    {payingBookingId === rental._id ? (
+                                                                        <><FaSpinner className="animate-spin" /> Processing...</>
+                                                                    ) : (
+                                                                        <><FaCreditCard /> Pay Now ₹{rental.totalPrice}</>
+                                                                    )}
+                                                                </button>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 ))

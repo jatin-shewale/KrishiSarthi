@@ -22,6 +22,16 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
         throw new Error('Not authorized');
     }
 
+    if (booking.status !== 'approved') {
+        res.status(400);
+        throw new Error('Booking must be approved before payment');
+    }
+
+    if (booking.paymentStatus === 'paid') {
+        res.status(400);
+        throw new Error('This booking has already been paid');
+    }
+
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
@@ -46,7 +56,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
         },
     });
 
-    res.json({ id: session.id });
+    res.json({ id: session.id, url: session.url });
 });
 
 // @desc    Verify Payment and Update Booking
