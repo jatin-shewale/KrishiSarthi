@@ -4,9 +4,6 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const Booking = require('../models/Booking');
 const Payment = require('../models/Payment');
 
-// @desc    Create Stripe Checkout Session
-// @route   POST /api/payments/create-checkout-session
-// @access  Private
 const createCheckoutSession = asyncHandler(async (req, res) => {
     const { bookingId } = req.body;
 

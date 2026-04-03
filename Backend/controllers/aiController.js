@@ -1,9 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const { OpenAI } = require('openai');
 
-// @desc    Get AI Farmer Assistant reply
-// @route   POST /api/ai/chat
-// @access  Public / Private
+
 const chatWithAI = asyncHandler(async (req, res) => {
     const { prompt } = req.body;
 

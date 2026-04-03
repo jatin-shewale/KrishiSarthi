@@ -5,8 +5,7 @@ const Equipment = require('../models/Equipment');
 const Booking = require('../models/Booking');
 const Payment = require('../models/Payment');
 
-// @desc    Admin Login Hardcoded
-// @route   POST /api/admin/login
+
 const adminLogin = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
     if (

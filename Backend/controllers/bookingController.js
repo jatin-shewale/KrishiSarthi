@@ -2,9 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Booking = require('../models/Booking');
 const Equipment = require('../models/Equipment');
 
-// @desc    Create new booking
-// @route   POST /api/bookings
-// @access  Private
+
 const createBooking = asyncHandler(async (req, res) => {
     const { equipmentId, startDate, endDate, totalPrice } = req.body;
 

@@ -3,9 +3,7 @@ const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const User = require('../models/User');
 
-// @desc    Register new user
-// @route   POST /api/users
-// @access  Public
+
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, role, location } = req.body;
 

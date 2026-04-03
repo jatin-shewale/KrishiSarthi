@@ -1,9 +1,7 @@
 const axios = require('axios');
 const asyncHandler = require('express-async-handler');
 
-// @desc    Get Weather and Farming suggestions
-// @route   GET /api/weather
-// @access  Public (or Private depending on choice)
+
 const getWeather = asyncHandler(async (req, res) => {
     const { lat, lon } = req.query;
 

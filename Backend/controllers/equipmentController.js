@@ -1,9 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const Equipment = require('../models/Equipment');
 
-// @desc    Get all equipment
-// @route   GET /api/equipment
-// @access  Public
+
 const getEquipment = asyncHandler(async (req, res) => {
     const { category, minPrice, maxPrice, location, search, owner } = req.query;
 
