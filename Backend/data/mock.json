@@ -1,0 +1,231 @@
+[
+  {
+    "name": "Mahindra 575 DI Tractor",
+    "category": "Tractor",
+    "price": 1200,
+    "location": "Pune, MH",
+    "description": "Powerful 45 HP tractor suitable for all terrains.",
+    "image": "https://unsplash.com/photos/a-red-tractor-parked-on-a-dirt-road-EC2IbcrFo3g",
+    "status": "approved"
+  },
+  {
+    "name": "John Deere 5050D Tractor",
+    "category": "Tractor",
+    "price": 1500,
+    "location": "Nashik, MH",
+    "description": "Fuel-efficient tractor with advanced hydraulics.",
+    "image": "https://unsplash.com/photos/a-tractor-in-a-field-i-GCZD2IdQ8",
+    "status": "approved"
+  },
+  {
+    "name": "Sonalika Rotavator 6ft",
+    "category": "Rotavator",
+    "price": 500,
+    "location": "Satara, MH",
+    "description": "Heavy-duty rotavator for deep soil preparation.",
+    "image": "https://share.google/VOzKD7CX6ToUq4iVL",
+    "status": "approved"
+  },
+  {
+    "name": "FieldKing Cultivator",
+    "category": "Cultivator",
+    "price": 400,
+    "location": "Kolhapur, MH",
+    "description": "Durable cultivator for efficient soil loosening.",
+    "image": "https://share.google/v2hV7zZyoIHyUtr0B",
+    "status": "approved"
+  },
+  {
+    "name": "John Deere Harvester",
+    "category": "Harvester",
+    "price": 5000,
+    "location": "Nagpur, MH",
+    "description": "High-capacity harvester for wheat & rice.",
+    "image": "https://share.google/p9CJe9tW4F7hugm6H",
+    "status": "approved"
+  },
+  {
+    "name": "Mini Rice Mill Machine",
+    "category": "Processing",
+    "price": 2000,
+    "location": "Aurangabad, MH",
+    "description": "Compact rice mill for small farmers.",
+    "image": "https://share.google/IJanW8rxW8Tktq1dY",
+    "status": "approved"
+  },
+  {
+    "name": "Precision Seeder Machine",
+    "category": "Seeder",
+    "price": 800,
+    "location": "Satara, MH",
+    "description": "Accurate seed placement technology.",
+    "image": "https://share.google/f7egdWhHMyVfOOvnH",
+    "status": "pending"
+  },
+  {
+    "name": "Automatic Wheat Thresher",
+    "category": "Thresher",
+    "price": 1800,
+    "location": "Solapur, MH",
+    "description": "High-speed wheat threshing machine.",
+    "image": "https://unsplash.com/photos/harvesting-grain-into-a-trailer-with-a-tractor-and-combine-0i5nVELbi64",
+    "status": "approved"
+  },
+  {
+    "name": "Automated Sprayer 200L",
+    "category": "Sprayer",
+    "price": 400,
+    "location": "Solapur, MH",
+    "description": "Efficient pesticide spraying system.",
+    "image": "https://unsplash.com/photos/tractor-spreading-artificial-fertilizers-transport-agricultural-augDfqF4bKU",
+    "status": "approved"
+  },
+  {
+    "name": "Manual Power Tiller",
+    "category": "Tiller",
+    "price": 600,
+    "location": "Jalgaon, MH",
+    "description": "Compact tiller for small farms.",
+    "image": "https://unsplash.com/photos/red-and-white-atv-on-green-grass-field-under-white-clouds-during-daytime-qAjp92l9-uU",
+    "status": "approved"
+  },
+
+  {
+    "name": "Kubota Mini Excavator",
+    "category": "Excavator",
+    "price": 3500,
+    "location": "Mumbai, MH",
+    "description": "Mini excavator for farm land leveling.",
+    "image": "https://unsplash.com/photos/orange-kubota-skid-steer-loader-driving-on-dirt-road-KCC4j3T8eRc",
+    "status": "approved"
+  },
+  {
+    "name": "Disc Harrow Machine",
+    "category": "Harrow",
+    "price": 900,
+    "location": "Pune, MH",
+    "description": "Ideal for breaking soil clods.",
+    "image": "https://unsplash.com/photos/agricultural-machinery-in-agricultural-fair-TzB0WO_gCZU",
+    "status": "approved"
+  },
+  {
+    "name": "Laser Land Leveler",
+    "category": "Leveler",
+    "price": 2500,
+    "location": "Nashik, MH",
+    "description": "Precision land leveling system.",
+    "image": "https://unsplash.com/photos/a-construction-site-with-a-camera-on-a-tripod-rPvMN-CQT2g",
+    "status": "approved"
+  },
+  {
+    "name": "Multi Crop Planter",
+    "category": "Seeder",
+    "price": 1000,
+    "location": "Amravati, MH",
+    "description": "Suitable for multiple crops.",
+    "image": "https://unsplash.com/photos/farmer-with-tractor-seeding-crops-at-agricultural-field-efmHl_SSaRU",
+    "status": "pending"
+  },
+  {
+    "name": "Tractor Trailer",
+    "category": "Transport",
+    "price": 700,
+    "location": "Wardha, MH",
+    "description": "Heavy-duty trailer for goods transport.",
+    "image": "https://share.google/y179kOQdnO3oqaf5P",
+    "status": "approved"
+  },
+
+  {
+    "name": "Electric Water Pump",
+    "category": "Irrigation",
+    "price": 300,
+    "location": "Latur, MH",
+    "description": "Efficient water pumping system.",
+    "image": "https://unsplash.com/photos/a-construction-site-with-a-large-power-line-in-the-background-eAk7n1IgCKk",
+    "status": "approved"
+  },
+  {
+    "name": "Drip Irrigation Kit",
+    "category": "Irrigation",
+    "price": 1200,
+    "location": "Beed, MH",
+    "description": "Water-saving irrigation system.",
+    "image": "https://unsplash.com/photos/irrigation-system-on-green-field-GhbLUELvrTE",
+    "status": "approved"
+  },
+  {
+    "name": "Solar Water Pump",
+    "category": "Irrigation",
+    "price": 2800,
+    "location": "Osmanabad, MH",
+    "description": "Eco-friendly solar pump.",
+    "image": "https://unsplash.com/photos/solar-photovoltaic-panels-mounted-on-city-street-pole-for-electricity-supply-of-streetlights-and-surveillance-cameras-8-0VfQfdbws",
+    "status": "approved"
+  },
+
+  {
+    "name": "Hydraulic Plough",
+    "category": "Plough",
+    "price": 800,
+    "location": "Ahmednagar, MH",
+    "description": "Strong plough for deep tilling.",
+    "image": "https://unsplash.com/photos/agriculture-red-tractor-cultivating-field-over-blue-sky-Fo8Jy-3iPww",
+    "status": "approved"
+  },
+  {
+    "name": "Fertilizer Broadcaster",
+    "category": "Fertilizer",
+    "price": 350,
+    "location": "Nanded, MH",
+    "description": "Even fertilizer spreading.",
+    "image": "https://share.google/oViBHrAfeApPqWz3S",
+    "status": "approved"
+  },
+
+  {
+    "name": "Chaff Cutter Machine",
+    "category": "Processing",
+    "price": 450,
+    "location": "Buldhana, MH",
+    "description": "Efficient fodder cutting machine.",
+    "image": "https://unsplash.com/photos/farmer-operating-feed-mixer-machine-in-barn-aiT6zNVnFC8",
+    "status": "approved"
+  },
+  {
+    "name": "Silage Baler Machine",
+    "category": "Baler",
+    "price": 2200,
+    "location": "Akola, MH",
+    "description": "For compact fodder storage.",
+    "image": "https://share.google/75bL2tRk3va2WSqHJ",
+    "status": "approved"
+  },
+  {
+    "name": "Post Hole Digger",
+    "category": "Digging",
+    "price": 600,
+    "location": "Dhule, MH",
+    "description": "Fast digging for fencing.",
+    "image": "https://share.google/gyIa7NsrCKhaLfqjP",
+    "status": "approved"
+  },
+  {
+    "name": "Sprinkler Irrigation System",
+    "category": "Irrigation",
+    "price": 900,
+    "location": "Parbhani, MH",
+    "description": "Uniform water distribution.",
+    "image": "https://unsplash.com/photos/irrigation-system-in-function-at-field-WQlSmgpUkGE",
+    "status": "approved"
+  },
+  {
+    "name": "Mini Tractor 20HP",
+    "category": "Tractor",
+    "price": 1000,
+    "location": "Gondia, MH",
+    "description": "Compact tractor for small farms.",
+    "image": "https://unsplash.com/photos/a-tractor-is-parked-on-the-grass-in-a-park-fLCnJdKV8Yo",
+    "status": "approved"
+  }
+]

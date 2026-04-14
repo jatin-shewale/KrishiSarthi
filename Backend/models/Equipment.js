@@ -9,7 +9,7 @@ const equipmentSchema = mongoose.Schema(
         category: {
             type: String,
             required: [true, 'Please add a category'],
-            enum: ['Tractor', 'Harvester', 'Tiller', 'Seeder', 'Sprayer', 'Other'],
+            enum: ['Tractor', 'Harvester', 'Tiller', 'Seeder', 'Sprayer', 'Other', 'Rotavator', 'Cultivator', 'Processing', 'Thresher', 'Excavator', 'Harrow', 'Leveler', 'Transport', 'Irrigation', 'Plough', 'Fertilizer', 'Baler', 'Digging'],
         },
         price: {
             type: Number,
