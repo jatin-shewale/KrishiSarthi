@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaCreditCard, FaLock, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const Payment = () => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Payment = () => {
                     const token = localStorage.getItem('krishisarthi_token');
                     const config = { headers: { Authorization: `Bearer ${token}` } };
                     
-                    await axios.post('http://localhost:5000/api/payments/success', {
+                    await api.post('/payments/success', {
                         sessionId,
                         bookingId
                     }, config);
@@ -71,7 +71,7 @@ const Payment = () => {
                 >
                     <FaCheckCircle className="text-6xl text-green-500 mx-auto mb-4" />
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Success!</h2>
-                    <p className="text-gray-600">Your equipment rental is confirmed. {process.env.NODE_ENV === 'development' ? 'Check Dashboard.' : ''}</p>
+                    <p className="text-gray-600">Your equipment rental is confirmed. {import.meta.env.DEV ? 'Check Dashboard.' : ''}</p>
                     <p className="mt-4 text-sm text-gray-400">Redirecting to dashboard...</p>
                 </motion.div>
             </div>

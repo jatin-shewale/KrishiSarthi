@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaMapMarkerAlt, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import api from '../services/api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ const Signup = () => {
     setLoading(true);
     try {
       const { confirmPassword, ...dataToSend } = formData;
-      const response = await axios.post('http://localhost:5000/api/users/register', dataToSend);
+      const response = await api.post('/users/register', dataToSend);
       toast.success('Account created successfully!');
       localStorage.setItem('krishisarthi_token', response.data.token);
       localStorage.setItem('krishisarthi_user', JSON.stringify(response.data));

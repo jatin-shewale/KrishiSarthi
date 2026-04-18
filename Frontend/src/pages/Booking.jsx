@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FaCalendarAlt, FaCheckCircle, FaTimesCircle, FaClock } from 'react-icons/fa';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const Booking = () => {
     const { id } = useParams();
@@ -17,7 +17,7 @@ const Booking = () => {
     useEffect(() => {
         const fetchEquipment = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/equipment/${id}`);
+                const res = await api.get(`/equipment/${id}`);
                 setEquipment(res.data);
             } catch (err) {
                 toast.error("Failed to load equipment");
@@ -44,7 +44,7 @@ const Booking = () => {
             const days = Math.ceil((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)) || 1;
             const totalPrice = days * equipment.price;
 
-            const res = await axios.post('http://localhost:5000/api/bookings', {
+            const res = await api.post('/bookings', {
                 equipmentId: id,
                 startDate,
                 endDate,
@@ -63,7 +63,7 @@ const Booking = () => {
         try {
             const token = localStorage.getItem('krishisarthi_token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const res = await axios.post('http://localhost:5000/api/payments/create-checkout-session', {
+            const res = await api.post('/payments/create-checkout-session', {
                 bookingId
             }, config);
 

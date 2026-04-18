@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaCalendarCheck, FaTractor, FaLeaf, FaMoneyBillWave, FaShieldAlt, FaRupeeSign, FaMapMarkerAlt, FaCloudSun, FaTint, FaThermometerHalf, FaLightbulb } from 'react-icons/fa';
-import axios from 'axios';
+import api from '../services/api';
 
 const Home = () => {
   const [latestEquipment, setLatestEquipment] = useState([]);
@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const fetchLatest = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/equipment');
+        const response = await api.get('/equipment');
         // Filter approved and sort by date (descending), take first 3
         const approved = response.data
           .filter(item => item.status === 'approved')
@@ -31,7 +31,7 @@ const Home = () => {
     // Fetch Weather based on location
     const fetchWeather = async (lat, lon) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/weather?lat=${lat}&lon=${lon}`);
+            const res = await api.get(`/weather?lat=${lat}&lon=${lon}`);
             setWeather(res.data);
         } catch (err) {
             console.error("Home Weather Error:", err);

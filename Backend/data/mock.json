@@ -5,7 +5,7 @@
     "price": 1200,
     "location": "Pune, MH",
     "description": "Powerful 45 HP tractor suitable for all terrains.",
-    "image": "https://unsplash.com/photos/a-red-tractor-parked-on-a-dirt-road-EC2IbcrFo3g",
+    "image": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9",
     "status": "approved"
   },
   {
@@ -14,7 +14,7 @@
     "price": 1500,
     "location": "Nashik, MH",
     "description": "Fuel-efficient tractor with advanced hydraulics.",
-    "image": "https://unsplash.com/photos/a-tractor-in-a-field-i-GCZD2IdQ8",
+    "image": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae",
     "status": "approved"
   },
   {
@@ -23,7 +23,7 @@
     "price": 500,
     "location": "Satara, MH",
     "description": "Heavy-duty rotavator for deep soil preparation.",
-    "image": "https://share.google/VOzKD7CX6ToUq4iVL",
+    "image": "https://images.unsplash.com/photo-1598514982841-0f3c9f6f2b4c",
     "status": "approved"
   },
   {
@@ -32,8 +32,8 @@
     "price": 400,
     "location": "Kolhapur, MH",
     "description": "Durable cultivator for efficient soil loosening.",
-    "image": "https://share.google/v2hV7zZyoIHyUtr0B",
-    "status": "approved"
+    "image": "https://images.unsplash.com/photo-1560493676-04071c5f467b",
+    "status": "pending"
   },
   {
     "name": "John Deere Harvester",
@@ -41,7 +41,7 @@
     "price": 5000,
     "location": "Nagpur, MH",
     "description": "High-capacity harvester for wheat & rice.",
-    "image": "https://share.google/p9CJe9tW4F7hugm6H",
+    "image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854",
     "status": "approved"
   },
   {
@@ -50,8 +50,8 @@
     "price": 2000,
     "location": "Aurangabad, MH",
     "description": "Compact rice mill for small farmers.",
-    "image": "https://share.google/IJanW8rxW8Tktq1dY",
-    "status": "approved"
+    "image": "https://images.unsplash.com/photo-1581091215367-59ab6b8a9d43",
+    "status": "pending"
   },
   {
     "name": "Precision Seeder Machine",
@@ -59,7 +59,7 @@
     "price": 800,
     "location": "Satara, MH",
     "description": "Accurate seed placement technology.",
-    "image": "https://share.google/f7egdWhHMyVfOOvnH",
+    "image": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449",
     "status": "pending"
   },
   {
@@ -68,7 +68,7 @@
     "price": 1800,
     "location": "Solapur, MH",
     "description": "High-speed wheat threshing machine.",
-    "image": "https://unsplash.com/photos/harvesting-grain-into-a-trailer-with-a-tractor-and-combine-0i5nVELbi64",
+    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
     "status": "approved"
   },
   {
@@ -77,7 +77,7 @@
     "price": 400,
     "location": "Solapur, MH",
     "description": "Efficient pesticide spraying system.",
-    "image": "https://unsplash.com/photos/tractor-spreading-artificial-fertilizers-transport-agricultural-augDfqF4bKU",
+    "image": "https://images.unsplash.com/photo-1560693225-b8507d6f3aa4",
     "status": "approved"
   },
   {
@@ -86,17 +86,16 @@
     "price": 600,
     "location": "Jalgaon, MH",
     "description": "Compact tiller for small farms.",
-    "image": "https://unsplash.com/photos/red-and-white-atv-on-green-grass-field-under-white-clouds-during-daytime-qAjp92l9-uU",
+    "image": "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0",
     "status": "approved"
   },
-
   {
     "name": "Kubota Mini Excavator",
     "category": "Excavator",
     "price": 3500,
     "location": "Mumbai, MH",
     "description": "Mini excavator for farm land leveling.",
-    "image": "https://unsplash.com/photos/orange-kubota-skid-steer-loader-driving-on-dirt-road-KCC4j3T8eRc",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
     "status": "approved"
   },
   {
@@ -105,7 +104,7 @@
     "price": 900,
     "location": "Pune, MH",
     "description": "Ideal for breaking soil clods.",
-    "image": "https://unsplash.com/photos/agricultural-machinery-in-agricultural-fair-TzB0WO_gCZU",
+    "image": "https://images.unsplash.com/photo-1615818499660-30bb5816e1c7",
     "status": "approved"
   },
   {
@@ -114,7 +113,7 @@
     "price": 2500,
     "location": "Nashik, MH",
     "description": "Precision land leveling system.",
-    "image": "https://unsplash.com/photos/a-construction-site-with-a-camera-on-a-tripod-rPvMN-CQT2g",
+    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
     "status": "approved"
   },
   {
@@ -123,7 +122,7 @@
     "price": 1000,
     "location": "Amravati, MH",
     "description": "Suitable for multiple crops.",
-    "image": "https://unsplash.com/photos/farmer-with-tractor-seeding-crops-at-agricultural-field-efmHl_SSaRU",
+    "image": "https://images.unsplash.com/photo-1464226184884-fa280b87c399",
     "status": "pending"
   },
   {
@@ -132,17 +131,16 @@
     "price": 700,
     "location": "Wardha, MH",
     "description": "Heavy-duty trailer for goods transport.",
-    "image": "https://share.google/y179kOQdnO3oqaf5P",
+    "image": "https://images.unsplash.com/photo-1571607388263-1044f9ea01dd",
     "status": "approved"
   },
-
   {
     "name": "Electric Water Pump",
     "category": "Irrigation",
     "price": 300,
     "location": "Latur, MH",
     "description": "Efficient water pumping system.",
-    "image": "https://unsplash.com/photos/a-construction-site-with-a-large-power-line-in-the-background-eAk7n1IgCKk",
+    "image": "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
     "status": "approved"
   },
   {
@@ -151,7 +149,7 @@
     "price": 1200,
     "location": "Beed, MH",
     "description": "Water-saving irrigation system.",
-    "image": "https://unsplash.com/photos/irrigation-system-on-green-field-GhbLUELvrTE",
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
     "status": "approved"
   },
   {
@@ -160,17 +158,16 @@
     "price": 2800,
     "location": "Osmanabad, MH",
     "description": "Eco-friendly solar pump.",
-    "image": "https://unsplash.com/photos/solar-photovoltaic-panels-mounted-on-city-street-pole-for-electricity-supply-of-streetlights-and-surveillance-cameras-8-0VfQfdbws",
+    "image": "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
     "status": "approved"
   },
-
   {
     "name": "Hydraulic Plough",
     "category": "Plough",
     "price": 800,
     "location": "Ahmednagar, MH",
     "description": "Strong plough for deep tilling.",
-    "image": "https://unsplash.com/photos/agriculture-red-tractor-cultivating-field-over-blue-sky-Fo8Jy-3iPww",
+    "image": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8",
     "status": "approved"
   },
   {
@@ -179,17 +176,16 @@
     "price": 350,
     "location": "Nanded, MH",
     "description": "Even fertilizer spreading.",
-    "image": "https://share.google/oViBHrAfeApPqWz3S",
-    "status": "approved"
+    "image": "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8",
+    "status": "pending"
   },
-
   {
     "name": "Chaff Cutter Machine",
     "category": "Processing",
     "price": 450,
     "location": "Buldhana, MH",
     "description": "Efficient fodder cutting machine.",
-    "image": "https://unsplash.com/photos/farmer-operating-feed-mixer-machine-in-barn-aiT6zNVnFC8",
+    "image": "https://images.unsplash.com/photo-1598515213692-e4f0bbab2d3f",
     "status": "approved"
   },
   {
@@ -198,7 +194,7 @@
     "price": 2200,
     "location": "Akola, MH",
     "description": "For compact fodder storage.",
-    "image": "https://share.google/75bL2tRk3va2WSqHJ",
+    "image": "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f",
     "status": "approved"
   },
   {
@@ -207,7 +203,7 @@
     "price": 600,
     "location": "Dhule, MH",
     "description": "Fast digging for fencing.",
-    "image": "https://share.google/gyIa7NsrCKhaLfqjP",
+    "image": "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
     "status": "approved"
   },
   {
@@ -216,7 +212,7 @@
     "price": 900,
     "location": "Parbhani, MH",
     "description": "Uniform water distribution.",
-    "image": "https://unsplash.com/photos/irrigation-system-in-function-at-field-WQlSmgpUkGE",
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
     "status": "approved"
   },
   {
@@ -225,7 +221,7 @@
     "price": 1000,
     "location": "Gondia, MH",
     "description": "Compact tractor for small farms.",
-    "image": "https://unsplash.com/photos/a-tractor-is-parked-on-the-grass-in-a-park-fLCnJdKV8Yo",
+    "image": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9",
     "status": "approved"
   }
 ]

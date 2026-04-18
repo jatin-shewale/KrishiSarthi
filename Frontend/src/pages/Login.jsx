@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import api from '../services/api';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', formData);
+      const response = await api.post('/users/login', formData);
       localStorage.setItem('krishisarthi_token', response.data.token);
       localStorage.setItem('krishisarthi_user', JSON.stringify(response.data));
       toast.success('Successfully logged in!');

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaRobot, FaUser } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const AIAssistant = () => {
     const [messages, setMessages] = useState([
@@ -30,7 +30,7 @@ const AIAssistant = () => {
         setLoading(true);
 
         try {
-            const res = await axios.post('http://localhost:5000/api/ai/chat', { prompt: userMsg });
+            const res = await api.post('/ai/chat', { prompt: userMsg });
             setMessages(prev => [...prev, { role: 'assistant', text: res.data.reply }]);
         } catch (error) {
             toast.error('AI is currently unavailable.');

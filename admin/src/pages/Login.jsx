@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import api from '../services/api';
 
 const Login = ({ setAuth }) => {
     const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -15,7 +15,7 @@ const Login = ({ setAuth }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await axios.post('http://localhost:5000/api/admin/login', credentials);
+            const res = await api.post('/admin/login', credentials);
             localStorage.setItem('admin_token', res.data.token);
             setAuth(true);
             toast.success('Admin access granted');

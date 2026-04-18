@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaTractor, FaClipboardList, FaRupeeSign, FaPlus, FaCheck, FaTimes, FaCameraRetro, FaCreditCard, FaSpinner } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const FarmerDashboard = () => {
     const [activeTab, setActiveTab] = useState('listings');
@@ -36,11 +36,11 @@ const FarmerDashboard = () => {
             const config = { headers: { Authorization: `Bearer ${token}` } };
 
             // Fetch My Equipments
-            const equipRes = await axios.get(`http://localhost:5000/api/equipment?owner=${user._id}`, config);
+            const equipRes = await api.get(`/equipment?owner=${user._id}`, config);
             setListings(equipRes.data);
 
             // Fetch My Bookings (Both as Renter and Owner)
-            const bookingRes = await axios.get(`http://localhost:5000/api/bookings`, config);
+            const bookingRes = await api.get('/bookings', config);
             
             const myRequests = bookingRes.data.filter(b => b.owner?._id === user._id || b.owner === user._id);
             const myRentals = bookingRes.data.filter(b => b.renter?._id === user._id || b.renter === user._id);
@@ -60,7 +60,7 @@ const FarmerDashboard = () => {
         try {
             const token = localStorage.getItem('krishisarthi_token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.put(`http://localhost:5000/api/bookings/${id}/status`, { status }, config);
+            await api.put(`/bookings/${id}/status`, { status }, config);
             toast.success(`Booking ${status} successfully`);
             fetchDashboardData();
         } catch (error) {
@@ -73,7 +73,7 @@ const FarmerDashboard = () => {
         try {
             const token = localStorage.getItem('krishisarthi_token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const res = await axios.post('http://localhost:5000/api/payments/create-checkout-session', {
+            const res = await api.post('/payments/create-checkout-session', {
                 bookingId
             }, config);
 

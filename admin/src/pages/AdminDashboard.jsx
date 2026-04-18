@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { motion } from 'framer-motion';
 import { FaUsers, FaTractor, FaCalendarAlt, FaMoneyBillWave, FaCheck, FaTimes, FaSignOutAlt, FaBars, FaChartLine, FaShieldAlt, FaMapMarkerAlt, FaEnvelope, FaArrowLeft, FaCreditCard } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const AdminDashboard = ({ setAuth }) => {
     const [stats, setStats] = useState(null);
@@ -24,16 +24,16 @@ const AdminDashboard = ({ setAuth }) => {
     const fetchDashboardData = async () => {
         setLoading(true);
         try {
-            const statsRes = await axios.get('http://localhost:5000/api/admin/stats', config);
+            const statsRes = await api.get('/admin/stats', config);
             setStats(statsRes.data);
             
-            const equipRes = await axios.get('http://localhost:5000/api/admin/equipment', config);
+            const equipRes = await api.get('/admin/equipment', config);
             setEquipmentList(equipRes.data);
 
-            const bookingRes = await axios.get('http://localhost:5000/api/admin/bookings', config);
+            const bookingRes = await api.get('/admin/bookings', config);
             setBookingList(bookingRes.data);
 
-            const usersRes = await axios.get('http://localhost:5000/api/admin/users', config);
+            const usersRes = await api.get('/admin/users', config);
             setUserList(usersRes.data);
 
             // Payments derived from paid bookings
@@ -51,7 +51,7 @@ const AdminDashboard = ({ setAuth }) => {
 
     const handleEquipmentApproval = async (id, status) => {
         try {
-            await axios.put(`http://localhost:5000/api/admin/equipment/${id}`, { status }, config);
+            await api.put(`/admin/equipment/${id}`, { status }, config);
             toast.success(`Equipment ${status} successfully`);
             fetchDashboardData(); // refresh list
         } catch (error) {
@@ -61,7 +61,7 @@ const AdminDashboard = ({ setAuth }) => {
 
     const handleBookingStatus = async (id, status) => {
         try {
-            await axios.put(`http://localhost:5000/api/admin/bookings/${id}`, { status }, config);
+            await api.put(`/admin/bookings/${id}`, { status }, config);
             toast.success(`Booking ${status} successfully`);
             fetchDashboardData(); 
         } catch (error) {

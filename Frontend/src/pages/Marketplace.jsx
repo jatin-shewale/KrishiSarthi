@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaFilter, FaMapMarkerAlt, FaRupeeSign } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const Marketplace = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,7 +17,7 @@ const Marketplace = () => {
   useEffect(() => {
     const fetchEquipment = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/equipment');
+        const response = await api.get('/equipment');
         // Only show approved equipment in marketplace
         const approved = response.data.filter(eq => eq.status === 'approved');
         setEquipmentList(approved);

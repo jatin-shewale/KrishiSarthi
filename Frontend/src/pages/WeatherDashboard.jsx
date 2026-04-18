@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { motion } from 'framer-motion';
 import { FaCloudSun, FaTint, FaMapMarkerAlt, FaSearch } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const WeatherDashboard = () => {
     const [weatherData, setWeatherData] = useState(null);
@@ -14,7 +14,7 @@ const WeatherDashboard = () => {
     const fetchWeather = async (lat, lon) => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:5000/api/weather?lat=${lat}&lon=${lon}`);
+            const res = await api.get(`/weather?lat=${lat}&lon=${lon}`);
             setWeatherData(res.data.weather);
             setSuggestions(res.data.suggestions);
         } catch (error) {

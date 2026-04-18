@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaRupeeSign, FaCheckCircle, FaStar, FaUser } from 'react-icons/fa';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const EquipmentDetails = () => {
     const { id } = useParams();
@@ -13,7 +13,7 @@ const EquipmentDetails = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/equipment/${id}`);
+                const res = await api.get(`/equipment/${id}`);
                 setEquipment(res.data);
             } catch (error) {
                 toast.error("Failed to load equipment details");

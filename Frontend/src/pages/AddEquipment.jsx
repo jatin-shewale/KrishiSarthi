@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaCloudUploadAlt, FaTractor, FaMoneyBillWave, FaMapMarkerAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 
 const AddEquipment = () => {
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ const AddEquipment = () => {
                 data.append('image', file);
             }
             
-            await axios.post('http://localhost:5000/api/equipment', data, config);
+            await api.post('/equipment', data, config);
             
             toast.success('Equipment Listed Successfully! Awaiting Admin Approval.');
             navigate('/dashboard/farmer');
