@@ -13,7 +13,14 @@ connectDB();
 const app = express();
 
 // Middleware
-const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL, 'http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    process.env.ADMIN_URL,
+    'https://krishi-sarthii.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174',
+].filter(Boolean);
+
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
