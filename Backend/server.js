@@ -17,6 +17,7 @@ const allowedOrigins = [
     process.env.FRONTEND_URL,
     process.env.ADMIN_URL,
     'https://krishi-sarthii.vercel.app',
+    'https://krishi-sarthi-admin1.vercel.app',
     'http://localhost:5173',
     'http://localhost:5174',
 ].filter(Boolean);
