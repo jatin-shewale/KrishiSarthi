@@ -118,4 +118,5 @@ KrishiSarthi/
 - [ ] Expand the **AI Assistant** with multi-language support (Hindi, Marathi, etc.).
 
 ---
-**KrishiSarthi** — Modernizing Agriculture, One Rental at a Time. 🚜🌱
+**KrishiSarthi** — Modernizing Agriculture, One Rental at a Time. 🚜🌱.!
+
