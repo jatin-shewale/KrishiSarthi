@@ -112,6 +112,8 @@ KrishiSarthi/
 
 ---
 
+
+
 ## 🌍 Roadmap & Deployment
 - [ ] Migrate local `uploads/` to **Cloudinary** or **AWS S3** for production-ready image hosting.
 - [ ] Implement **Push Notifications** for booking approvals.
