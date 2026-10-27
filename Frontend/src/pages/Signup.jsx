@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaMapMarkerAlt, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import api from '../services/api';
 
 const Signup = () => {
+  const location = useLocation();
+  const adminSignup = location.pathname === '/admin/signup';
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    email: adminSignup ? 'admin@gmail.com' : '',
     location: '',
-    role: 'farmer',
+    role: adminSignup ? 'admin' : 'farmer',
+    inviteCode: '',
     password: '',
     confirmPassword: ''
   });
@@ -19,7 +22,12 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+      ...(name === 'role' && value === 'admin' ? { email: 'admin@gmail.com' } : {}),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -35,7 +43,8 @@ const Signup = () => {
       toast.success('Account created successfully!');
       localStorage.setItem('krishisarthi_token', response.data.token);
       localStorage.setItem('krishisarthi_user', JSON.stringify(response.data));
-      navigate('/dashboard/farmer');
+      if (response.data.role === 'admin') localStorage.setItem('admin_token', response.data.token);
+      navigate(response.data.role === 'admin' ? '/admin' : '/dashboard/farmer');
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to create account.');
     } finally {
@@ -58,7 +67,7 @@ const Signup = () => {
         <h2 className="mt-6 text-center text-4xl font-extrabold text-gray-900 drop-shadow-sm">Join KrishiSarthi</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <Link to="/login" className="font-semibold text-primary hover:text-primary-dark transition-colors">
+          <Link to={formData.role === 'admin' ? '/admin/login' : '/login'} className="font-semibold text-primary hover:text-primary-dark transition-colors">
             Sign in here
           </Link>
         </p>
@@ -108,6 +117,7 @@ const Signup = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
+                  readOnly={formData.role === 'admin'}
                   className="focus:ring-2 focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3 border bg-white/50 transition-all outline-none"
                   placeholder="farmer@krishisarthi.com"
                 />
@@ -135,12 +145,19 @@ const Signup = () => {
               </div>
             </div>
 
-            <div className="bg-earth-50 border border-primary/20 rounded-xl p-4 text-center">
-                <p className="text-sm font-medium text-primary-deep">
-                    One account for all your needs: <br/>
-                    <span className="font-bold">Rent machinery</span> or <span className="font-bold">List your own</span>.
-                </p>
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700">Account role</label>
+              <select id="role" name="role" value={formData.role} onChange={handleChange} className="mt-1 block w-full rounded-lg border border-gray-300 bg-white/70 py-3 px-3 focus:ring-2 focus:ring-primary outline-none">
+                <option value="farmer">Farmer</option>
+                <option value="admin">Administrator</option>
+              </select>
+              {formData.role === 'admin' && <p className="mt-2 text-xs text-gray-600">Administrator accounts require an authorized invite code.</p>}
             </div>
+
+            {formData.role === 'admin' && <div>
+              <label htmlFor="inviteCode" className="block text-sm font-medium text-gray-700">Admin invite code</label>
+              <input id="inviteCode" name="inviteCode" type="password" required value={formData.inviteCode} onChange={handleChange} className="mt-1 block w-full rounded-lg border border-gray-300 py-3 px-3 outline-none focus:ring-2 focus:ring-primary" autoComplete="off" />
+            </div>}
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">

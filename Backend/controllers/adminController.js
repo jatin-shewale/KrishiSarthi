@@ -7,14 +7,16 @@ const Payment = require('../models/Payment');
 
 
 const adminLogin = asyncHandler(async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     if (
-        username === (process.env.ADMIN_USERNAME || 'admin') &&
+        email?.trim().toLowerCase() === (process.env.ADMIN_EMAIL || 'admin@gmail.com').toLowerCase() &&
         password === (process.env.ADMIN_PASSWORD || 'admin123')
     ) {
         res.json({
             token: jwt.sign({ id: 'admin_env' }, process.env.JWT_SECRET, { expiresIn: '30d' }),
-            username: 'admin'
+            email: process.env.ADMIN_EMAIL || 'admin@gmail.com',
+            name: 'KrishiSarthi Admin',
+            role: 'admin'
         });
     } else {
         res.status(401);

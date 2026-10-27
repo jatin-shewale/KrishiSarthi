@@ -22,8 +22,9 @@ const Login = () => {
       const response = await api.post('/users/login', formData);
       localStorage.setItem('krishisarthi_token', response.data.token);
       localStorage.setItem('krishisarthi_user', JSON.stringify(response.data));
+      if (response.data.role === 'admin') localStorage.setItem('admin_token', response.data.token);
       toast.success('Successfully logged in!');
-      navigate('/dashboard/farmer');
+      navigate(response.data.role === 'admin' ? '/admin' : '/dashboard/farmer');
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to logic. Please check credentials.');
     } finally {

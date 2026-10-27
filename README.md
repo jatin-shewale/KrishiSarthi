@@ -40,18 +40,22 @@ npm install
 npm run dev # Starts on port 5000
 ```
 
-### 3. Frontend & Admin Launch
+### 3. Launch the unified frontend
 ```bash
 # In one terminal
 cd Frontend
 npm install
 npm run dev # Starts on port 5173
 
-# In another terminal
-cd admin
-npm install
-npm run dev # Starts on port 5174
 ```
+
+The farmer and administrator experiences run in the same `Frontend` app. Use `/login` for farmer accounts, `/admin` for the administrator console, `/admin/login` to sign in with the configured admin email/password, and `/admin/signup` to create the invited admin account.
+
+### Vercel frontend settings
+- Set the Vercel project's **Root Directory** to `Frontend`, with build command `npm run build` and output directory `dist`.
+- Set `VITE_API_BASE_URL` in the Vercel project's environment variables to the deployed backend URL ending in `/api` (do not use localhost in production).
+- Deploy the `Backend` separately. Configure its `MONGO_URI`, `JWT_SECRET`, `FRONTEND_URL` (the deployed frontend origin), `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `ADMIN_SIGNUP_CODE` environment variables there.
+- The Vercel rewrite in `Frontend/vercel.json` routes deep links such as `/admin/login` back to the single-page app.
 
 ---
 
@@ -73,9 +77,10 @@ OPENAI_API_KEY=sk-... # Get from platform.openai.com
 
 # Access Configuration
 FRONTEND_URL=http://localhost:5173
-ADMIN_URL=http://localhost:5174
-ADMIN_USERNAME=admin
+ADMIN_URL=http://localhost:5173
+ADMIN_EMAIL=admin@gmail.com
 ADMIN_PASSWORD=admin123
+ADMIN_SIGNUP_CODE=choose-a-private-invite-code
 ```
 
 ---
@@ -89,10 +94,10 @@ KrishiSarthi/
 │   ├── models/          # Mongoose Schemas (User, Equipment, Booking)
 │   ├── routes/          # API Endpoints
 │   └── uploads/         # Local Equipment Image Storage
-├── Frontend/            # Main Farmer Portal
+├── Frontend/            # Unified farmer and admin app
 │   ├── src/components/  # UI Components (Navbar, FloatingAI)
 │   └── src/pages/       # App Views (Marketplace, Dashboard, AI)
-└── admin/               # Dedicated Moderation Portal
+└── admin/               # Legacy standalone app (not needed to run)
     ├── src/pages/       # Admin Views (Login, Signup, Dashboard)
     └── src/styles/      # Shared Design System
 ```
@@ -101,10 +106,10 @@ KrishiSarthi/
 
 ## 🛡️ Administrative Guidance
 
-### Default Admin Access
-- **URL**: `http://localhost:5174`
-- **Username**: `admin`
-- **Password**: `admin123`
+### Administrator access
+- **Email**: `admin@gmail.com` (configurable with `ADMIN_EMAIL`)
+- **Password**: Set `ADMIN_PASSWORD` in `Backend/.env` (defaults to `admin123` for local development)
+- Admin account signup at `/admin/signup` requires `ADMIN_SIGNUP_CODE` in `Backend/.env`.
 
 ### Moderation Workflow
 1. **Equipment Verification**: When a Farmer lists a tractor, it appears in the **Admin Dashboard > Manage Equipment**. It must be approved before appearing in the public marketplace.
@@ -121,4 +126,6 @@ KrishiSarthi/
 
 ---
 **KrishiSarthi** — Modernizing Agriculture, One Rental at a Time. 🚜🌱.!
+
+
 

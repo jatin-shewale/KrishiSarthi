@@ -33,6 +33,9 @@ const Navbar = () => {
     { name: 'Add Equipment', path: '/add-equipment', icon: <FaPlusCircle /> },
     { name: 'Dashboard', path: '/dashboard/farmer', icon: <FaThLarge /> },
   ];
+  const dashboardLink = user.role === 'admin'
+    ? { name: 'Admin Console', path: '/admin', icon: <FaThLarge /> }
+    : null;
 
   const isActive = (path) => location.pathname === path;
 
@@ -63,7 +66,7 @@ const Navbar = () => {
               </Link>
             ))}
             
-            {token && authLinks.map((link) => (
+            {token && (dashboardLink ? [dashboardLink] : authLinks).map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
@@ -133,7 +136,7 @@ const Navbar = () => {
             className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navLinks.concat(token ? authLinks : []).map((link) => (
+              {navLinks.concat(token ? (dashboardLink ? [dashboardLink] : authLinks) : []).map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}

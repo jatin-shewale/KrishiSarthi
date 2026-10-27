@@ -5,11 +5,26 @@ const User = require('../models/User');
 
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password, role, location } = req.body;
+    const { name, email, password, role, location, inviteCode } = req.body;
+
+    if (role && !['farmer', 'admin'].includes(role)) {
+        res.status(400);
+        throw new Error('Invalid account role');
+    }
+
+    if (role === 'admin' && (!process.env.ADMIN_SIGNUP_CODE || inviteCode !== process.env.ADMIN_SIGNUP_CODE)) {
+        res.status(403);
+        throw new Error('A valid administrator invite code is required');
+    }
 
     if (!name || !email || !password || !location) {
         res.status(400);
         throw new Error('Please add all fields');
+    }
+
+    if (role === 'admin' && email.trim().toLowerCase() !== (process.env.ADMIN_EMAIL || 'admin@gmail.com').toLowerCase()) {
+        res.status(400);
+        throw new Error(`Administrator accounts must use ${process.env.ADMIN_EMAIL || 'admin@gmail.com'}`);
     }
 
     // Check if user exists
